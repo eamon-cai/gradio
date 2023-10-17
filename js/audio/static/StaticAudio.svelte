@@ -6,7 +6,7 @@
 	import type { FileData } from "@gradio/upload";
 	import type { LoadingStatus } from "@gradio/statustracker";
 
-	import StaticAudio from "./AudioPlayer.svelte";
+	import StaticAudio from "./Audio.svelte";
 	import { StatusTracker } from "@gradio/statustracker";
 	import { Block } from "@gradio/atoms";
 
@@ -34,6 +34,10 @@
 		share: ShareData;
 		error: string;
 	}>;
+
+	// waveform settings
+	export let waveformColor: string;
+	export let waveformProgressColor: string;
 
 	let old_value: null | FileData | string = null;
 
@@ -70,14 +74,17 @@
 	/>
 
 	<StaticAudio
-		i18n={gradio.i18n}
-		{autoplay}
+		value={_value}
+		{label}
+		name={_value?.name || "audio_file"}
 		{show_label}
+		{autoplay}
 		{show_download_button}
 		{show_share_button}
-		value={_value}
-		name={_value?.name || "audio_file"}
-		{label}
+		i18n={gradio.i18n}
+		interactive={mode === "interactive"}
+		{waveformColor}
+		{waveformProgressColor}
 		on:share={(e) => gradio.dispatch("share", e.detail)}
 		on:error={(e) => gradio.dispatch("error", e.detail)}
 	/>

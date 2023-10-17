@@ -9,7 +9,11 @@
 		"allow_recording_access": "Please allow access to the microphone for recording.",
 		"audio": "Audio",
 		"record_from_microphone": "Record from microphone",
-		"stop_recording": "Stop recording"
+		"stop_recording": "Stop recording",
+		"stop": "Stop",
+		"resume": "Resume",
+		"record": "Record",
+		"no_microphone": "No microphone found"
 	},
 	"blocks": {
 		"connection_can_break": "On mobile, the connection can break if this tab is unfocused or the device sleeps, losing your position in queue.",

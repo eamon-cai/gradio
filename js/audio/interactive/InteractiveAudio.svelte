@@ -47,6 +47,10 @@
 		clear: never;
 	}>;
 
+	// waveform settings
+	export let waveformColor = "#9ca3af";
+	export let waveformProgressColor = "#f97316";
+
 	let old_value: null | FileData | string = null;
 
 	let _value: null | FileData;
@@ -110,6 +114,8 @@
 			gradio.dispatch("error", detail);
 		}}
 		i18n={gradio.i18n}
+		{waveformColor}
+		{waveformProgressColor}
 	>
 		<UploadText i18n={gradio.i18n} type="audio" />
 	</Audio>

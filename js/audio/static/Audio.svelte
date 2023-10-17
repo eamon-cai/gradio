@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
 	import type { FileData } from "@gradio/upload";
-	import { Empty } from "@gradio/atoms";
 
 	export interface AudioData extends FileData {
 		crop_min?: number;
@@ -9,13 +8,12 @@
 </script>
 
 <script lang="ts">
-	import { createEventDispatcher, tick } from "svelte";
 	import { uploadToHuggingFace } from "@gradio/utils";
-	import { BlockLabel, ShareButton, IconButton } from "@gradio/atoms";
-	import { Music, Download } from "@gradio/icons";
-
-	import { loaded } from "../shared/utils";
-	import type { I18nFormatter } from "js/app/src/gradio_helper";
+	import { ShareButton, IconButton, BlockLabel } from "@gradio/atoms";
+	import { Download, Music } from "@gradio/icons";
+	import type { I18nFormatter } from "@gradio/utils";
+	import AudioPlayer from "../player/AudioPlayer.svelte";
+	import { createEventDispatcher } from "svelte";
 
 	export let value: null | { name: string; data: string } = null;
 	export let label: string;
@@ -24,6 +22,11 @@
 	export let autoplay: boolean;
 	export let show_download_button = true;
 	export let show_share_button = false;
+	export let i18n: I18nFormatter;
+	export let interactive: boolean;
+
+	export let waveformColor: string;
+	export let waveformProgressColor: string;
 
 	const dispatch = createEventDispatcher<{
 		change: AudioData;
@@ -36,15 +39,8 @@
 	$: value &&
 		dispatch("change", {
 			name: name,
-			data: value?.data
+			data: value?.data,
 		});
-
-	function handle_ended(): void {
-		dispatch("stop");
-		dispatch("end");
-	}
-
-	export let i18n: I18nFormatter;
 </script>
 
 <BlockLabel
@@ -53,6 +49,7 @@
 	float={false}
 	label={label || i18n("audio.audio")}
 />
+
 {#if value !== null}
 	<div class="icon-buttons">
 		{#if show_download_button}
@@ -78,31 +75,20 @@
 			/>
 		{/if}
 	</div>
-{/if}
 
-{#if value === null}
-	<Empty size="small">
-		<Music />
-	</Empty>
-{:else}
-	<audio
-		use:loaded={{ autoplay }}
-		controls
-		preload="metadata"
-		src={value?.data}
-		on:play
-		on:pause
-		on:ended={handle_ended}
-		data-testid={`${label}-audio`}
+	<AudioPlayer
+		{value}
+		{label}
+		{autoplay}
+		{waveformColor}
+		{waveformProgressColor}
+		{interactive}
+		{i18n}
+		{dispatch}
 	/>
 {/if}
 
 <style>
-	audio {
-		padding: var(--size-2);
-		width: var(--size-full);
-		height: var(--size-14);
-	}
 	.icon-buttons {
 		display: flex;
 		position: absolute;
