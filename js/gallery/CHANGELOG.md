@@ -1,5 +1,16 @@
 # @gradio/gallery
 
+## 0.4.0-beta.8
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @gradio/utils@0.2.0-beta.5
+  - @gradio/atoms@0.2.0-beta.5
+  - @gradio/image@0.3.0-beta.8
+  - @gradio/statustracker@0.3.0-beta.7
+  - @gradio/upload@0.3.0-beta.5
+
 ## 0.4.0-beta.7
 
 ### Patch Changes

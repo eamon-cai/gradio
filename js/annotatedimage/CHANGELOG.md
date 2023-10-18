@@ -1,10 +1,20 @@
 # @gradio/annotatedimage
 
+## 0.3.0-beta.1
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @gradio/utils@0.2.0-beta.5
+  - @gradio/atoms@0.2.0-beta.5
+  - @gradio/statustracker@0.3.0-beta.7
+  - @gradio/upload@0.3.0-beta.5
+
 ## 0.3.0-beta.0
 
 ### Features
 
-- [#5960](https://github.com/gradio-app/gradio/pull/5960) [`319c30f3f`](https://github.com/gradio-app/gradio/commit/319c30f3fccf23bfe1da6c9b132a6a99d59652f7) - rererefactor frontend files.  Thanks [@pngwn](https://github.com/pngwn)!
+- [#5960](https://github.com/gradio-app/gradio/pull/5960) [`319c30f3f`](https://github.com/gradio-app/gradio/commit/319c30f3fccf23bfe1da6c9b132a6a99d59652f7) - rererefactor frontend files. Thanks [@pngwn](https://github.com/pngwn)!
 
 ## 0.2.3
 

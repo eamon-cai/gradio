@@ -1,5 +1,12 @@
 # @gradio/tootils
 
+## 0.1.0-beta.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @gradio/utils@0.2.0-beta.5
+
 ## 0.1.0-beta.5
 
 ### Patch Changes
